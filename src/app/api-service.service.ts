@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { delay, first } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 export interface ApiConfig {
     API_URL: string;
 }
 
-export const API_CONFIG_PATH = '../assets/api-url-config.json';
+export const API_CONFIG_PATH = environment.production ?
+                               './assets/api-url-config.json' :
+                               '../assets/api-url-config.json';
 
 
 @Injectable({
